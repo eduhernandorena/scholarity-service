@@ -1,4 +1,4 @@
-package br.org.firgs.scholarityservice;
+package br.org.fiergs.scholarityservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

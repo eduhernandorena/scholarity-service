@@ -1,13 +1,15 @@
-package br.org.firgs.scholarityservice.services;
+package br.org.fiergs.scholarityservice.services;
 
-import br.org.firgs.scholarityservice.entities.Scholarity;
-import br.org.firgs.scholarityservice.repositories.ScholarityRepository;
+import br.org.fiergs.scholarityservice.entities.Scholarity;
+import br.org.fiergs.scholarityservice.repositories.ScholarityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ScholarityService {
 
     @Autowired
@@ -37,7 +39,7 @@ public class ScholarityService {
     }
 
     public Scholarity update(Scholarity scholarity) {
-        Optional<Scholarity> optScholarity = scholarityRepository.findOneByNameContainingIgnoreCaseOrIdentifierAndIdNot(scholarity.getName(), scholarity.getIdentifier(), scholarity.getId());
+        Optional<Scholarity> optScholarity = scholarityRepository.findOneByNameIgnoreCaseOrIdentifierAndIdNot(scholarity.getName(), scholarity.getIdentifier(), scholarity.getId());
         if (optScholarity.isEmpty()) {
             return scholarityRepository.save(scholarity);
         } else {

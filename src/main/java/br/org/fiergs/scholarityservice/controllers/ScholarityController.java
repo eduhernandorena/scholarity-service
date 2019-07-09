@@ -1,7 +1,7 @@
-package br.org.firgs.scholarityservice.controllers;
+package br.org.fiergs.scholarityservice.controllers;
 
-import br.org.firgs.scholarityservice.entities.Scholarity;
-import br.org.firgs.scholarityservice.services.ScholarityService;
+import br.org.fiergs.scholarityservice.entities.Scholarity;
+import br.org.fiergs.scholarityservice.services.ScholarityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

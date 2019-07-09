@@ -1,4 +1,4 @@
-package br.org.firgs.scholarityservice.entities;
+package br.org.fiergs.scholarityservice.entities;
 
 import lombok.*;
 
