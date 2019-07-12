@@ -5,7 +5,6 @@ import br.org.fiergs.scholarityservice.repositories.ScholarityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,18 +18,14 @@ public class ScholarityService {
         return scholarityRepository.findAll();
     }
 
-    public List<Scholarity> findByName(String name) {
-        Optional<List<Scholarity>> optScholarity = scholarityRepository.findByNameContainingIgnoreCase(name);
-        return optScholarity.orElse(new ArrayList<>());
-    }
-
-    public Scholarity findByIdentifier(String identifier) {
-        Optional<Scholarity> optScholarity = scholarityRepository.findByIdentifier(identifier);
+    public Scholarity findByName(String name) {
+        Optional<Scholarity> optScholarity = scholarityRepository.findByNameContainingIgnoreCase(name);
         return optScholarity.orElse(null);
     }
 
+
     public Scholarity save(Scholarity scholarity) {
-        Optional<Scholarity> optScholarity = scholarityRepository.findByNameOrIdentifier(scholarity.getName(), scholarity.getIdentifier());
+        Optional<Scholarity> optScholarity = scholarityRepository.findByNameContainingIgnoreCase(scholarity.getName());
         if (optScholarity.isEmpty()) {
             return scholarityRepository.save(scholarity);
         } else {
@@ -39,7 +34,7 @@ public class ScholarityService {
     }
 
     public Scholarity update(Scholarity scholarity) {
-        Optional<Scholarity> optScholarity = scholarityRepository.findOneByNameIgnoreCaseOrIdentifierAndIdNot(scholarity.getName(), scholarity.getIdentifier(), scholarity.getId());
+        Optional<Scholarity> optScholarity = scholarityRepository.findOneByNameIgnoreCaseAndIdNot(scholarity.getName(), scholarity.getId());
         if (optScholarity.isEmpty()) {
             return scholarityRepository.save(scholarity);
         } else {

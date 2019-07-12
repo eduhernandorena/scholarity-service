@@ -23,13 +23,8 @@ public class ScholarityController {
     }
 
     @GetMapping("/name/{name}")
-    public List<Scholarity> listByDescription(@PathVariable("name") String name) {
+    public Scholarity listByDescription(@PathVariable("name") String name) {
         return scholarityService.findByName(name);
-    }
-
-    @GetMapping("/identifier/{identifier}")
-    public Scholarity findByIdentifier(@PathVariable("identifier") String identifier) {
-        return scholarityService.findByIdentifier(identifier);
     }
 
     @PostMapping
